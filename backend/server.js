@@ -76,7 +76,11 @@ app.post("/api/create-order", async (req, res) => {
         notify_url: `${PUBLIC_BASE_URL}/api/cashfree/webhook`,
       },
     };
-
+    console.log("--- Sending to Cashfree ---");
+    console.log("URL:", `${BASE_URL}/orders`);
+    console.log("Headers:", JSON.stringify(headers, null, 2));
+    console.log("Payload:", JSON.stringify(payload, null, 2));
+    console.log("--- End of Request ---");
     const resp = await axios.post(`${BASE_URL}/orders`, payload, { headers: authHeaders() });
     const { payment_session_id, cf_order_id } = resp.data || {};
 
