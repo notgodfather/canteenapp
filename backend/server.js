@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(",") || "*",
+  origin: process.env.CORS_ORIGIN
 }));
 app.use(express.json());
 
