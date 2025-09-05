@@ -130,7 +130,7 @@ function App() {
       setMessage("Verifying payment...");
 
       // 3) Verify order after checkout closes
-      const vresp = await fetch("http://localhost:8080/api/verify-order", {
+      const vresp = await fetch(`${import.meta.env.VITE_API_URL}/api/verify-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId }),
