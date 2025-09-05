@@ -67,7 +67,7 @@ app.post("/api/create-order", async (req, res) => {
         customer_id: user.uid,
         customer_name: user.displayName || "Guest",
         customer_email: user.email || "noemail@example.com",
-        customer_phone: user.phoneNumber || "",
+        customer_phone: user.phoneNumber || "9999999999",
       },
       order_note: "College canteen order",
       order_meta: {
