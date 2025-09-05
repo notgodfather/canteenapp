@@ -111,7 +111,7 @@ function App() {
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || "Create order failed");
 
-      const { orderId, paymentSessionId, amount, currency } = data;
+      const { orderId, paymentSessionId, amount, currency,envMode } = data;
       setMessage("Opening payment...");
 
       // 2) Open Cashfree Web Checkout (popup)
@@ -120,7 +120,7 @@ function App() {
       }
       // Use correct mode for your environment
       const mode = import.meta.env.PROD ? "production" : "sandbox";
-      const cashfree = window.Cashfree({ mode });
+      const cashfree = window.Cashfree({ mode: envMode });
 
       await cashfree.checkout({
         paymentSessionId,

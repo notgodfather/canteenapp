@@ -46,6 +46,7 @@ function makeOrderId() {
 // Create Cashfree Order -> payment_session_id
 app.post("/api/create-order", async (req, res) => {
   console.log("--- CREATE ORDER REQUEST RECEIVED ---");
+
   try {
     const { cart, user } = req.body || {};
     if (!user?.uid) return res.status(400).json({ error: "Missing user" });
@@ -88,13 +89,14 @@ app.post("/api/create-order", async (req, res) => {
     if (!payment_session_id) {
       return res.status(500).json({ error: "No payment_session_id from Cashfree", raw: resp.data });
     }
-
+    const environmentMode = isSandbox ? "sandbox" : "production";
     return res.json({
       orderId,
       cfOrderId: cf_order_id,
       paymentSessionId: payment_session_id,
       amount: orderAmount,
       currency: "INR",
+      envMode: environmentMode,
     });
   } catch (e) {
     console.error("Create order error:", e?.response?.data || e.message);
