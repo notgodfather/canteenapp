@@ -95,7 +95,7 @@ function App() {
       setMessage("Creating order...");
 
       // 1) Ask backend to create order and get payment_session_id
-      const resp = await fetch("http://localhost:8080/api/create-order", {
+      const resp = await fetch(`${import.meta.env.VITE_API_URL}/api/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
