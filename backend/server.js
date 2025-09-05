@@ -45,6 +45,7 @@ function makeOrderId() {
 
 // Create Cashfree Order -> payment_session_id
 app.post("/api/create-order", async (req, res) => {
+  console.log("--- CREATE ORDER REQUEST RECEIVED ---");
   try {
     const { cart, user } = req.body || {};
     if (!user?.uid) return res.status(400).json({ error: "Missing user" });
