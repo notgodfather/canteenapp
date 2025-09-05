@@ -76,6 +76,7 @@ app.post("/api/create-order", async (req, res) => {
         notify_url: `${PUBLIC_BASE_URL}/api/cashfree/webhook`,
       },
     };
+    const headers = authHeaders();
     console.log("--- Sending to Cashfree ---");
     console.log("URL:", `${BASE_URL}/orders`);
     console.log("Headers:", JSON.stringify(headers, null, 2));
