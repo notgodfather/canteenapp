@@ -14,7 +14,7 @@ app.use(express.json());
 
 const isSandbox = process.env.CASHFREE_ENV !== "production";
 const BASE_URL = isSandbox ? "https://sandbox.cashfree.com/pg" : "https://api.cashfree.com/pg";
-const API_VERSION = "2025-01-01"; // use the version enabled on your account
+const API_VERSION = "2023-08-01"; // use the version enabled on your account
 const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || `http://localhost:${process.env.PORT || 8080}`;
 
 function authHeaders() {
